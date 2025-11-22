@@ -3,32 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 1. Render Content from data.js ---
     renderPortfolio();
 
-    // --- 2. Custom Cursor Logic ---
-    const cursorDot = document.querySelector('[data-cursor-dot]');
-    const cursorOutline = document.querySelector('[data-cursor-outline]');
-
-    window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-
-        cursorDot.style.left = `${posX}px`;
-        cursorDot.style.top = `${posY}px`;
-
-        // Outline follows with slight delay (css transition handles smooth)
-        cursorOutline.animate({
-            left: `${posX}px`,
-            top: `${posY}px`
-        }, { duration: 500, fill: "forwards" });
-    });
-
-    // Hover effects
-    const hoverElements = document.querySelectorAll('a, button, .glass-card, .skill-tag, .project-card');
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-    });
-
-    // --- 3. Navbar Scroll Effect ---
+    // --- 2. Navbar Scroll Effect ---
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -38,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 4. Smooth Scrolling ---
+    // --- 3. Smooth Scrolling ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -52,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // --- 5. Scroll Animations (Fade In) ---
+    // --- 4. Scroll Animations (Fade In) ---
     initAnimations();
 
-    // --- 6. Mouse Parallax for Orbs ---
+    // --- 5. Mouse Parallax for Orbs ---
     document.addEventListener('mousemove', (e) => {
         const x = e.clientX / window.innerWidth;
         const y = e.clientY / window.innerHeight;
@@ -77,26 +52,29 @@ function renderPortfolio() {
 
     // Hero
     const heroHTML = `
-        <span class="section-subtitle">Hello, I am</span>
-        <h1>${data.profile.name}</h1>
-        <h2 class="gradient-text">${data.profile.roles.join(' & ')}</h2>
-        <p>${data.profile.bio}</p>
-        <div class="cta-group">
-            <a href="#projects" class="btn-primary">View Projects</a>
-            <div class="social-links">
-                <a href="${data.profile.social.github}" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="${data.profile.social.linkedin}" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                <a href="${data.profile.social.huggingface}" target="_blank" class="social-icon">🤗</a>
-                <a href="${data.profile.social.email}" class="social-icon"><i class="fas fa-envelope"></i></a>
+        <div class="hero-content">
+            <span class="section-subtitle">Hello, I am</span>
+            <h1>${data.profile.name}</h1>
+            <h2 class="gradient-text">${data.profile.roles.join(' & ')}</h2>
+            <p>${data.profile.bio}</p>
+            <div class="cta-group">
+                <a href="#projects" class="btn-primary">View Projects</a>
+                <div class="social-links">
+                    <a href="${data.profile.social.github}" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
+                    <a href="${data.profile.social.linkedin}" target="_blank" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                    <a href="${data.profile.social.huggingface}" target="_blank" class="social-icon">🤗</a>
+                    <a href="${data.profile.social.email}" class="social-icon"><i class="fas fa-envelope"></i></a>
+                </div>
             </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="${data.profile.profileImage}" alt="${data.profile.name}" class="hero-img">
         </div>
     `;
     document.getElementById('hero-content').innerHTML = heroHTML;
 
     // About
     document.getElementById('about-content').innerHTML = `
-        <span class="section-subtitle">About Me</span>
-        <h3>Profile</h3>
         <p>${data.about.summary}</p>
     `;
 
@@ -141,8 +119,12 @@ function renderPortfolio() {
             <div class="project-header">
                 <div class="project-icon"><i class="${proj.icon || 'fas fa-code'}"></i></div>
                 <div class="project-links">
-                    <a href="${proj.links.demo}" title="Live Demo"><i class="fas fa-external-link-alt"></i></a>
-                    <a href="${proj.links.github}" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="${proj.links.demo}" target="_blank" class="live-demo-btn">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                    <a href="${proj.links.github}" target="_blank" class="github-link" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
                 </div>
             </div>
             <h3>${proj.title}</h3>
@@ -167,7 +149,7 @@ function renderPortfolio() {
         <div class="email-display">
             <i class="fas fa-envelope"></i>
             <span id="email-text">${data.profile.email}</span>
-            <button class="copy-btn" onclick="copyEmail()" title="Copy Email">
+            <button class="copy-btn" onclick="copyEmail(this)" title="Copy Email">
                 <i class="fas fa-copy"></i>
             </button>
         </div>
@@ -195,7 +177,7 @@ function initAnimations() {
         });
     }, observerOptions);
 
-    const animateElements = document.querySelectorAll('.glass-card, h2, .hero-content > *, .timeline-item');
+    const animateElements = document.querySelectorAll('.glass-card, h2, .hero-content > *, .timeline-item, .hero-image-container');
 
     animateElements.forEach(el => {
         el.style.opacity = "0";
@@ -205,9 +187,18 @@ function initAnimations() {
     });
 }
 
-window.copyEmail = function () {
+window.copyEmail = function (btn) {
     const email = document.getElementById('email-text').innerText;
     navigator.clipboard.writeText(email).then(() => {
-        alert('Email copied to clipboard!');
+        btn.classList.add('copied');
+        const icon = btn.querySelector('i');
+        icon.classList.remove('fa-copy');
+        icon.classList.add('fa-check');
+
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            icon.classList.remove('fa-check');
+            icon.classList.add('fa-copy');
+        }, 2000);
     });
 }

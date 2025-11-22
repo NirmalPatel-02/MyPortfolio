@@ -8,7 +8,8 @@ const portfolioData = {
         "bio": "B.Sc. IT graduate with a strong foundation in Python, Machine Learning, and Deep Learning. I specialize in building intelligent models, data preprocessing, and API integration. Passionate about leveraging AI to solve real-world problems through clean, efficient, and impactful code.",
         "email": "nilupatel02005@gmail.com",
         "phone": "+91-8140637181",
-        "location": "Ahmedabad, Gujarat, India",
+        "location": "Patan, Gujarat, India",
+        "profileImage": "PortfolioCurrent.png",
         "social": {
             "github": "https://github.com/NirmalPatel-02",
             "linkedin": "https://www.linkedin.com/feed/",
@@ -62,6 +63,7 @@ const portfolioData = {
                 "Data Preprocessing",
                 "EDA",
                 "Feature Engineering",
+                "Transfer Learning",
                 "ANN",
                 "CNN",
                 "RNN",
@@ -102,11 +104,13 @@ const portfolioData = {
                 "Python",
                 "TensorFlow",
                 "FastAPI",
+                "NLP",
+                "Scikit-Learn",
                 "NLP"
             ],
             "links": {
-                "demo": "#",
-                "github": "#"
+                "demo": "https://nirmal-patel-commentvision-ai.hf.space/",
+                "github": "https://github.com/NirmalPatel-02/Youtube-Commant-Analyzer-AI"
             },
             "icon": "fas fa-comment-slash"
         },
@@ -114,13 +118,14 @@ const portfolioData = {
             "title": "CarDamageAnalysis AI",
             "description": "Multi-Stage Car Damage Assessment System using EfficientNet-B3. Achieved 99.1% accuracy on car detection and damage classification.",
             "tech": [
-                "Computer Vision",
                 "EfficientNet",
-                "Transfer Learning"
+                "CNN",
+                "Transfer Learning",
+                "Tensorflow"
             ],
             "links": {
-                "demo": "#",
-                "github": "#"
+                "demo": "https://nirmal-patel-car-damage-analysis-ai.hf.space/",
+                "github": "https://github.com/NirmalPatel-02/CarDamageDetector"
             },
             "icon": "fas fa-car-crash"
         },
@@ -128,15 +133,51 @@ const portfolioData = {
             "title": "Used Car Value Estimator",
             "description": "Neural Network model to estimate resale value based on age, mileage, and brand. Deployed using FastAPI and hosted on Hugging Face.",
             "tech": [
+                "Python",
+                "Tensorflow",
                 "Neural Networks",
                 "Regression",
                 "Hugging Face"
             ],
             "links": {
-                "demo": "#",
-                "github": "#"
+                "demo": "https://nirmal-patel-oldcarpriceprediction.hf.space",
+                "github": "https://github.com/NirmalPatel-02/UsedCarPricePredict"
             },
             "icon": "fas fa-tags"
+        },
+        {
+            "title": "CampusHire Predictor",
+            "description": "Classification model predicting student placement probability using academic data.",
+            "tech": [
+                "Python",
+                "TensorFlow",
+                "Scikit-learn",
+                "Pandas",
+                "Matplotlib",
+                "FastAPI"
+            ],
+            "links": {
+                "demo": "https://nirmal-patel-placementpredicter.hf.space/",
+                "github": "#"
+            },
+            "icon": "fas fa-code"
+        },
+        {
+            "title": "SwiftETA",
+            "description": "Predicts accurate Estimated Delivery Time (ETD) for food delivery apps like Zomato and Swiggy, trained on real-world Indian delivery datasets.",
+            "tech": [
+                "Python",
+                "Tensorflow",
+                "Scikit-Learn",
+                "Neural Network",
+                "Pandas",
+                "Numpy"
+            ],
+            "links": {
+                "demo": "https://nirmal-patel-swifteta.hf.space/",
+                "github": "https://github.com/NirmalPatel-02/DeliveryETA"
+            },
+            "icon": "fas fa-code"
         }
     ]
 };

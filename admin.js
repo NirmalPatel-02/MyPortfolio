@@ -21,6 +21,7 @@ function loadData() {
     document.getElementById('p-email').value = currentData.profile.email;
     document.getElementById('p-phone').value = currentData.profile.phone;
     document.getElementById('p-location').value = currentData.profile.location;
+    document.getElementById('p-image').value = currentData.profile.profileImage || '';
 
     document.getElementById('s-github').value = currentData.profile.social.github;
     document.getElementById('s-linkedin').value = currentData.profile.social.linkedin;
@@ -187,6 +188,7 @@ function generateCode() {
     currentData.profile.email = document.getElementById('p-email').value;
     currentData.profile.phone = document.getElementById('p-phone').value;
     currentData.profile.location = document.getElementById('p-location').value;
+    currentData.profile.profileImage = document.getElementById('p-image').value;
 
     currentData.profile.social.github = document.getElementById('s-github').value;
     currentData.profile.social.linkedin = document.getElementById('s-linkedin').value;
