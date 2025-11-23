@@ -1,236 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Admin</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        body {
-            padding-bottom: 100px;
-            cursor: auto;
-        }
-
-        /* Reset cursor for admin */
-        * {
-            cursor: auto;
-        }
-
-        .admin-container {
-            max-width: 1000px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 10px;
-            overflow-x: auto;
-        }
-
-        .tab-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 1rem;
-            white-space: nowrap;
-        }
-
-        .tab-btn.active {
-            color: var(--accent-cyan);
-            border-bottom: 2px solid var(--accent-cyan);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            color: var(--accent-cyan);
-            margin-bottom: 8px;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--glass-border);
-            color: #fff;
-            border-radius: 8px;
-            font-family: inherit;
-        }
-
-        .form-group textarea {
-            height: 100px;
-            resize: vertical;
-        }
-
-        .item-card {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            border: 1px solid var(--glass-border);
-            position: relative;
-        }
-
-        .remove-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            color: #ff4d4d;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
-        .action-bar {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #fff;
-            padding: 8px 16px;
-            border-radius: 50px;
-            border: none;
-            cursor: pointer;
-        }
-
-        #export-area {
-            width: 100%;
-            height: 200px;
-            margin-top: 20px;
-            display: none;
-            font-family: monospace;
-            font-size: 0.8rem;
-        }
+      body {
+        padding-bottom: 100px;
+        cursor: auto;
+      }
+      * {
+        cursor: auto;
+      }
+      .admin-container {
+        max-width: 1000px;
+        margin: 50px auto;
+        padding: 0 20px;
+      }
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+      }
+      .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid var(--glass-border);
+        padding-bottom: 10px;
+        overflow-x: auto;
+      }
+      .tab-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 1rem;
+        white-space: nowrap;
+      }
+      .tab-btn.active {
+        color: var(--accent-cyan);
+        border-bottom: 2px solid var(--accent-cyan);
+      }
+      .tab-content {
+        display: none;
+      }
+      .tab-content.active {
+        display: block;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      .form-group label {
+        display: block;
+        color: var(--accent-cyan);
+        margin-bottom: 8px;
+      }
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--glass-border);
+        color: #fff;
+        border-radius: 8px;
+        font-family: inherit;
+      }
+      .form-group textarea {
+        height: 100px;
+        resize: vertical;
+      }
+      .item-card {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        border: 1px solid var(--glass-border);
+        position: relative;
+      }
+      .remove-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        color: #ff4d4d;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+      }
+      .action-bar {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+      }
+      .btn-secondary {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 50px;
+        border: none;
+        cursor: pointer;
+      }
+      #export-area {
+        width: 100%;
+        height: 200px;
+        margin-top: 20px;
+        display: none;
+        font-family: monospace;
+        font-size: 0.8rem;
+      }
     </style>
-</head>
-
-<body>
-
+  </head>
+  <body>
     <div class="admin-container">
-        <div class="admin-header">
-            <h1 style="font-size: 2rem;">Portfolio Manager</h1>
-            <a href="index.html" class="btn-primary">View Site</a>
-        </div>
+      <div class="admin-header">
+        <h1 style="font-size: 2rem">Portfolio Manager</h1>
+        <a href="index.html" class="btn-primary">View Site</a>
+      </div>
 
-        <div class="tabs">
-            <button class="tab-btn active" onclick="switchTab('profile')">Profile</button>
-            <button class="tab-btn" onclick="switchTab('skills')">Skills</button>
-            <button class="tab-btn" onclick="switchTab('projects')">Projects</button>
-            <button class="tab-btn" onclick="switchTab('education')">Education</button>
-            <button class="tab-btn" onclick="switchTab('experience')">Experience</button>
-        </div>
+      <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('profile')">
+          Profile
+        </button>
+        <button class="tab-btn" onclick="switchTab('education')">
+          Education
+        </button>
+        <button class="tab-btn" onclick="switchTab('problems')">
+          Problem Solving
+        </button>
+        <button class="tab-btn" onclick="switchTab('skills')">Skills</button>
+        <button class="tab-btn" onclick="switchTab('projects')">
+          Projects
+        </button>
+        <button class="tab-btn" onclick="switchTab('experience')">
+          Experience
+        </button>
+      </div>
 
-        <!-- Profile Tab -->
-        <div id="profile" class="tab-content active">
-            <div class="glass-card">
-                <div class="form-group">
-                    <label>Name</label>
-                    <input type="text" id="p-name">
-                </div>
-                <div class="form-group">
-                    <label>Roles (comma separated)</label>
-                    <input type="text" id="p-roles">
-                </div>
-                <div class="form-group">
-                    <label>Bio</label>
-                    <textarea id="p-bio"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="text" id="p-email">
-                </div>
-                <div class="form-group">
-                    <label>Phone</label>
-                    <input type="text" id="p-phone">
-                </div>
-                <div class="form-group">
-                    <label>Location</label>
-                    <input type="text" id="p-location">
-                </div>
-                <div class="form-group">
-                    <label>Profile Image URL</label>
-                    <input type="text" id="p-image">
-                </div>
-                <h3>Social Links</h3>
-                <div class="form-group">
-                    <label>GitHub</label>
-                    <input type="text" id="s-github">
-                </div>
-                <div class="form-group">
-                    <label>LinkedIn</label>
-                    <input type="text" id="s-linkedin">
-                </div>
-                <div class="form-group">
-                    <label>HuggingFace</label>
-                    <input type="text" id="s-huggingface">
-                </div>
-            </div>
+      <div id="profile" class="tab-content active">
+        <div class="glass-card">
+          <div class="form-group">
+            <label>Name</label><input type="text" id="p-name" />
+          </div>
+          <div class="form-group">
+            <label>Roles (comma separated)</label
+            ><input type="text" id="p-roles" />
+          </div>
+          <div class="form-group">
+            <label>Bio</label><textarea id="p-bio"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Email</label><input type="text" id="p-email" />
+          </div>
+          <div class="form-group">
+            <label>Phone</label><input type="text" id="p-phone" />
+          </div>
+          <div class="form-group">
+            <label>Location</label><input type="text" id="p-location" />
+          </div>
+          <div class="form-group">
+            <label>Profile Image URL</label><input type="text" id="p-image" />
+          </div>
+          <h3>Social Links</h3>
+          <div class="form-group">
+            <label>GitHub</label><input type="text" id="s-github" />
+          </div>
+          <div class="form-group">
+            <label>LinkedIn</label><input type="text" id="s-linkedin" />
+          </div>
+          <div class="form-group">
+            <label>HuggingFace</label><input type="text" id="s-huggingface" />
+          </div>
         </div>
+      </div>
 
-        <!-- Skills Tab -->
-        <div id="skills" class="tab-content">
-            <div id="skills-list"></div>
-            <button class="btn-secondary" onclick="addSkillCategory()">+ Add Category</button>
-        </div>
+      <div id="education" class="tab-content">
+        <div id="education-list"></div>
+        <button class="btn-secondary" onclick="addEducation()">
+          + Add Education
+        </button>
+      </div>
 
-        <!-- Projects Tab -->
-        <div id="projects" class="tab-content">
-            <div id="projects-list"></div>
-            <button class="btn-secondary" onclick="addProject()">+ Add Project</button>
-        </div>
+      <div id="problems" class="tab-content">
+        <div id="problems-list"></div>
+        <button class="btn-secondary" onclick="addProblemSolving()">
+          + Add Platform
+        </button>
+      </div>
 
-        <!-- Education Tab -->
-        <div id="education" class="tab-content">
-            <div id="education-list"></div>
-            <button class="btn-secondary" onclick="addEducation()">+ Add Education</button>
-        </div>
+      <div id="skills" class="tab-content">
+        <div id="skills-list"></div>
+        <button class="btn-secondary" onclick="addSkillCategory()">
+          + Add Category
+        </button>
+      </div>
 
-        <!-- Experience Tab -->
-        <div id="experience" class="tab-content">
-            <div id="experience-list"></div>
-            <button class="btn-secondary" onclick="addExperience()">+ Add Experience</button>
-        </div>
+      <div id="projects" class="tab-content">
+        <div id="projects-list"></div>
+        <button class="btn-secondary" onclick="addProject()">
+          + Add Project
+        </button>
+      </div>
 
-        <div style="margin-top: 40px; border-top: 1px solid var(--glass-border); padding-top: 20px;">
-            <button class="btn-primary" onclick="generateCode()">Generate Code</button>
-            <p style="color: var(--text-secondary); margin-top: 10px;">Click "Generate Code", then copy the text below
-                and paste it into <code>data.js</code>.</p>
-            <textarea id="export-area" readonly></textarea>
-        </div>
+      <div id="experience" class="tab-content">
+        <div id="experience-list"></div>
+        <button class="btn-secondary" onclick="addExperience()">
+          + Add Experience
+        </button>
+      </div>
+
+      <div
+        style="
+          margin-top: 40px;
+          border-top: 1px solid var(--glass-border);
+          padding-top: 20px;
+        "
+      >
+        <button class="btn-primary" onclick="generateCode()">
+          Generate Code
+        </button>
+        <p style="color: var(--text-secondary); margin-top: 10px">
+          Click "Generate Code", then copy the text below and paste it into
+          <code>data.js</code>.
+        </p>
+        <textarea id="export-area" readonly></textarea>
+      </div>
     </div>
 
     <script src="data.js"></script>
     <script src="admin.js"></script>
-</body>
-
+  </body>
 </html>

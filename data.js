@@ -12,7 +12,7 @@ const portfolioData = {
         "profileImage": "PortfolioCurrent.png",
         "social": {
             "github": "https://github.com/NirmalPatel-02",
-            "linkedin": "https://www.linkedin.com/feed/",
+            "linkedin": "https://www.linkedin.com/in/nirmal-patel-184500251/",
             "huggingface": "https://huggingface.co/Nirmal-Patel",
             "email": "mailto:nilupatel02005@gmail.com"
         }
@@ -32,6 +32,20 @@ const portfolioData = {
             "institution": "Ganpat University",
             "year": "2022 – 2025",
             "score": "CGPA: 7.97"
+        }
+    ],
+    "problemSolving": [
+        {
+            "platform": "LeetCode",
+            "stats": "100+ Problems Solved",
+            "link": "https://leetcode.com/u/nilupatel02005/",
+            "icon": "fas fa-code"
+        },
+        {
+            "platform": "HackerRank",
+            "stats": "3 Star (Python)",
+            "link": "https://www.hackerrank.com/profile/nilupatel02005",
+            "icon": "fab fa-hackerrank"
         }
     ],
     "skills": [
@@ -99,14 +113,14 @@ const portfolioData = {
     "projects": [
         {
             "title": "CommentVision AI",
-            "description": "YouTube Toxicity Analyzer using Bidirectional GRU multi-label classifier. Analyzes 500 comments in <8s. Integrated with YouTube Data API v3 + FastAPI.",
+            "description": "YouTube Toxicity Analyzer using Bidirectional GRU multi-label classifier. Analyzes 500 comments in <8s.",
+            "notes": "I developed this project using a Bidirectional GRU architecture to handle the sequential nature of text data effectively. The model was trained on a balanced dataset of toxic and non-toxic comments. Key challenges included handling class imbalance and optimizing inference time, which I achieved by using FastAPI for asynchronous request handling.",
             "tech": [
                 "Python",
                 "TensorFlow",
                 "FastAPI",
                 "NLP",
-                "Scikit-Learn",
-                "NLP"
+                "Scikit-Learn"
             ],
             "links": {
                 "demo": "https://nirmal-patel-commentvision-ai.hf.space/",
@@ -116,7 +130,8 @@ const portfolioData = {
         },
         {
             "title": "CarDamageAnalysis AI",
-            "description": "Multi-Stage Car Damage Assessment System using EfficientNet-B3. Achieved 99.1% accuracy on car detection and damage classification.",
+            "description": "Multi-Stage Car Damage Assessment System using EfficientNet-B3. Achieved 99.1% accuracy.",
+            "notes": "This system uses Transfer Learning with EfficientNet-B3. I implemented a two-stage pipeline: first detecting if a car is present, and second classifying the damage type. Data augmentation was crucial here to prevent overfitting.",
             "tech": [
                 "EfficientNet",
                 "CNN",
@@ -131,7 +146,8 @@ const portfolioData = {
         },
         {
             "title": "Used Car Value Estimator",
-            "description": "Neural Network model to estimate resale value based on age, mileage, and brand. Deployed using FastAPI and hosted on Hugging Face.",
+            "description": "Neural Network model to estimate resale value based on age, mileage, and brand.",
+            "notes": "Built using a deep neural network regression model. I spent significant time on Feature Engineering, specifically encoding categorical variables like Car Brand and Fuel Type. The model is deployed on Hugging Face Spaces.",
             "tech": [
                 "Python",
                 "Tensorflow",
@@ -148,6 +164,7 @@ const portfolioData = {
         {
             "title": "CampusHire Predictor",
             "description": "Classification model predicting student placement probability using academic data.",
+            "notes": "A binary classification project using Scikit-learn. I compared multiple algorithms (Logistic Regression, Random Forest, SVM) and found Random Forest gave the best precision-recall trade-off.",
             "tech": [
                 "Python",
                 "TensorFlow",
@@ -160,11 +177,12 @@ const portfolioData = {
                 "demo": "https://nirmal-patel-placementpredicter.hf.space/",
                 "github": "#"
             },
-            "icon": "fas fa-code"
+            "icon": "fas fa-graduation-cap"
         },
         {
             "title": "SwiftETA",
-            "description": "Predicts accurate Estimated Delivery Time (ETD) for food delivery apps like Zomato and Swiggy, trained on real-world Indian delivery datasets.",
+            "description": "Predicts accurate Estimated Delivery Time (ETD) for food delivery apps.",
+            "notes": "Trained on real-world Indian delivery datasets. I cleaned the data to remove outliers (e.g., deliveries taking 5 hours) and used a Neural Network to predict time based on distance, traffic, and time of day.",
             "tech": [
                 "Python",
                 "Tensorflow",
@@ -177,7 +195,7 @@ const portfolioData = {
                 "demo": "https://nirmal-patel-swifteta.hf.space/",
                 "github": "https://github.com/NirmalPatel-02/DeliveryETA"
             },
-            "icon": "fas fa-code"
+            "icon": "fas fa-stopwatch"
         }
     ]
 };
