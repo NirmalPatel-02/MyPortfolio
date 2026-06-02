@@ -9,7 +9,7 @@ const portfolioData = {
         "email": "nilupatel02005@gmail.com",
         "phone": "+91-8140637181",
         "location": "Patan, Gujarat, India",
-        "profileImage": "PortfolioCurrent.png",
+        "profileImage": "PortfolioCurrent.jpeg",
         "social": {
             "github": "https://github.com/NirmalPatel-02",
             "linkedin": "https://www.linkedin.com/in/nirmal-patel-184500251/",
