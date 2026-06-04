@@ -25,7 +25,7 @@ const portfolioData = {
             "degree": "M.Sc. (CA & IT)",
             "institution": "Ganpat University",
             "year": "2025 – 2027",
-            "score": "Current CGPA: 8.6"
+            "score": "Current CGPA: 8.98"
         },
         {
             "degree": "B.Sc. (CA & IT)",
@@ -37,7 +37,7 @@ const portfolioData = {
     "problemSolving": [
         {
             "platform": "LeetCode",
-            "stats": "100+ Problems Solved",
+            "stats": "120+ Problems Solved",
             "link": "https://leetcode.com/u/nilupatel02005/",
             "icon": "fas fa-code"
         },
@@ -54,7 +54,6 @@ const portfolioData = {
             "items": [
                 "Python",
                 "PHP",
-                "JavaScript",
                 "SQL"
             ]
         },
@@ -107,10 +106,33 @@ const portfolioData = {
             "role": "Backend Developer Intern",
             "company": "BM Coder",
             "duration": "Jan 2025 – Jun 2025",
-            "description": "Built and maintained dynamic web applications, crafting robust APIs and optimized database structures. Resolved complex bugs in live projects, enhancing reliability and user satisfaction. Actively participated in code reviews to uphold best practices."
+            "description": "Designed and developed RESTful APIs using Laravel following MVC architecture.\nBuilt optimized MySQL schemas and improved query performance for high-usage workflows.\nImplemented authentication, validation, error handling, and secure CRUD operations. \nDebugged and resolved production-level issues, improving stability and reducing repeated failures.\nWorked in an Agile environment: code reviews, sprint tasks, testing, and collaboration with senior developers."
         }
     ],
     "projects": [
+        {
+            "title": "MediScan ",
+            "description": " AI Medical Report Analyst ",
+            "notes": "Detailed project notes...",
+            "tech": [
+                "Python",
+                "XGBoost",
+                "PaddleOCR",
+                "FastAPI",
+                "MySQL",
+                "React",
+                "Groq API",
+                "ChromaDB",
+                "LangChain",
+                "JWT",
+                "Tailwind CSS"
+            ],
+            "links": {
+                "demo": "https://mediscan-health.netlify.app/",
+                "github": "https://github.com/NirmalPatel-02/MediScan"
+            },
+            "icon": "fas fa-diagnoses"
+        },
         {
             "title": "CommentVision AI",
             "description": "YouTube Toxicity Analyzer using Bidirectional GRU multi-label classifier. Analyzes 500 comments in <8s.",
