@@ -9,7 +9,7 @@ const portfolioData = {
         {
             "id": "about",
             "type": "about",
-            "enabled": true,
+            "enabled": false,
             "title": "About"
         },
         {
@@ -79,7 +79,7 @@ const portfolioData = {
         "highlights": [
             {
                 "label": "Projects Shipped",
-                "value": "6+"
+                "value": "7+"
             },
             {
                 "label": "Problems Solved",
@@ -311,7 +311,7 @@ const portfolioData = {
             ],
             "links": {
                 "demo": "",
-                "github": "#"
+                "github": "https://github.com/NirmalPatel-02/Career-Compass"
             },
             "video": "",
             "icon": "fas fa-graduation-cap"
