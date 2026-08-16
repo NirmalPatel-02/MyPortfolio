@@ -10,230 +10,269 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
-      body {
-        padding-bottom: 100px;
-        cursor: auto;
-      }
-      * {
-        cursor: auto;
-      }
+      body { padding-bottom: 100px; }
+      .lattice-wrapper { opacity: 0.6; }
       .admin-container {
-        max-width: 1000px;
-        margin: 50px auto;
-        padding: 0 20px;
+        max-width: 980px;
+        margin: 110px auto 60px;
+        padding: 0 24px;
       }
       .admin-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 14px;
       }
       .tabs {
         display: flex;
-        gap: 10px;
+        gap: 8px;
         margin-bottom: 30px;
-        border-bottom: 1px solid var(--glass-border);
-        padding-bottom: 10px;
         overflow-x: auto;
+        padding-bottom: 6px;
       }
       .tab-btn {
-        background: transparent;
-        border: none;
+        background: var(--surface);
+        border: 1px solid var(--glass-border);
         color: var(--text-secondary);
-        padding: 10px 20px;
+        padding: 10px 18px;
         cursor: pointer;
-        font-size: 1rem;
+        font-size: 0.9rem;
         white-space: nowrap;
+        border-radius: 50px;
+        font-family: var(--font-body);
+        font-weight: 500;
+        transition: var(--transition);
       }
       .tab-btn.active {
-        color: var(--accent-cyan);
-        border-bottom: 2px solid var(--accent-cyan);
+        color: #fff;
+        background: linear-gradient(120deg, var(--accent-indigo), var(--accent-cyan));
+        border-color: transparent;
       }
-      .tab-content {
-        display: none;
-      }
-      .tab-content.active {
-        display: block;
-      }
-      .form-group {
-        margin-bottom: 20px;
-      }
+      .tab-content { display: none; }
+      .tab-content.active { display: block; }
+      .form-group { margin-bottom: 18px; }
       .form-group label {
         display: block;
-        color: var(--accent-cyan);
-        margin-bottom: 8px;
+        color: var(--text-primary);
+        font-weight: 600;
+        font-size: 0.88rem;
+        margin-bottom: 6px;
       }
-      .form-group input,
-      .form-group textarea {
+      .form-group .hint { color: var(--text-tertiary); font-size: 0.78rem; font-weight: 400; margin-left: 4px; }
+      .form-group input, .form-group textarea {
         width: 100%;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.05);
+        padding: 11px 14px;
+        background: rgba(16,19,31,0.03);
         border: 1px solid var(--glass-border);
-        color: #fff;
-        border-radius: 8px;
+        color: var(--text-primary);
+        border-radius: 10px;
         font-family: inherit;
+        font-size: 0.92rem;
       }
-      .form-group textarea {
-        height: 100px;
-        resize: vertical;
+      .form-group input:focus, .form-group textarea:focus {
+        outline: none;
+        border-color: var(--accent-indigo);
+        background: #fff;
       }
+      .form-group textarea { height: 90px; resize: vertical; }
+      .form-group textarea.md { height: 160px; font-family: var(--font-mono); font-size: 0.85rem; }
+      .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
       .item-card {
-        background: rgba(255, 255, 255, 0.03);
-        padding: 20px;
-        border-radius: 8px;
-        margin-bottom: 15px;
+        background: var(--surface);
+        padding: 22px;
+        border-radius: 14px;
+        margin-bottom: 16px;
         border: 1px solid var(--glass-border);
         position: relative;
       }
-      .remove-btn {
+      .item-toolbar {
         position: absolute;
-        top: 10px;
-        right: 10px;
-        color: #ff4d4d;
-        background: transparent;
-        border: none;
-        cursor: pointer;
-      }
-      .action-bar {
-        margin-top: 20px;
+        top: 14px;
+        right: 14px;
         display: flex;
-        gap: 10px;
+        gap: 6px;
       }
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-        padding: 8px 16px;
-        border-radius: 50px;
+      .icon-tool {
+        background: rgba(16,19,31,0.05);
         border: none;
+        color: var(--text-secondary);
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
         cursor: pointer;
+        font-size: 0.85rem;
+        transition: var(--transition);
       }
+      .icon-tool:hover { background: rgba(16,19,31,0.1); color: var(--text-primary); }
+      .icon-tool.danger:hover { background: var(--accent-rose); color: #fff; }
+      .action-bar { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
+      .btn-secondary {
+        background: rgba(16,19,31,0.05);
+        color: var(--text-primary);
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: 1px solid var(--glass-border);
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.88rem;
+        transition: var(--transition);
+      }
+      .btn-secondary:hover { background: rgba(16,19,31,0.08); }
       #export-area {
         width: 100%;
-        height: 200px;
+        height: 240px;
         margin-top: 20px;
         display: none;
-        font-family: monospace;
-        font-size: 0.8rem;
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        background: #10131f;
+        color: #cfe3ff;
+        border-radius: 12px;
+        padding: 16px;
+        border: none;
       }
+      .section-row {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        border: 1px solid var(--glass-border);
+        border-radius: 12px;
+        margin-bottom: 10px;
+        background: var(--surface);
+      }
+      .section-row input[type="text"] {
+        flex: 1;
+        padding: 9px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--glass-border);
+        background: rgba(16,19,31,0.02);
+        font-size: 0.9rem;
+      }
+      .section-type-badge {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--text-tertiary);
+        background: rgba(16,19,31,0.04);
+        padding: 4px 10px;
+        border-radius: 6px;
+        white-space: nowrap;
+      }
+      .switch { position: relative; display: inline-block; width: 40px; height: 22px; flex-shrink: 0; }
+      .switch input { opacity: 0; width: 0; height: 0; }
+      .slider { position: absolute; cursor: pointer; inset: 0; background-color: rgba(16,19,31,0.15); transition: .3s; border-radius: 22px; }
+      .slider:before { position: absolute; content: ""; height: 16px; width: 16px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+      input:checked + .slider { background: linear-gradient(120deg, var(--accent-indigo), var(--accent-cyan)); }
+      input:checked + .slider:before { transform: translateX(18px); }
+      .custom-items-panel {
+        margin-top: 12px;
+        padding-top: 12px;
+        border-top: 1px dashed var(--glass-border);
+        display: none;
+      }
+      .custom-items-panel.open { display: block; }
+      .empty-hint { color: var(--text-tertiary); font-size: 0.85rem; padding: 10px 0; }
     </style>
   </head>
   <body>
+    <div class="lattice-wrapper"><div id="lattice-container"></div></div>
+
     <div class="admin-container">
       <div class="admin-header">
-        <h1 style="font-size: 2rem">Portfolio Manager</h1>
+        <div>
+          <span class="section-eyebrow" style="margin-bottom:6px;">Admin</span>
+          <h1 style="font-size: 2rem; margin-bottom:0;">Portfolio Manager</h1>
+        </div>
         <a href="index.html" class="btn-primary">View Site</a>
       </div>
 
       <div class="tabs">
-        <button class="tab-btn active" onclick="switchTab('profile')">
-          Profile
-        </button>
-        <button class="tab-btn" onclick="switchTab('education')">
-          Education
-        </button>
-        <button class="tab-btn" onclick="switchTab('problems')">
-          Problem Solving
-        </button>
+        <button class="tab-btn active" onclick="switchTab('profile')">Profile</button>
+        <button class="tab-btn" onclick="switchTab('sections')">Sections</button>
+        <button class="tab-btn" onclick="switchTab('education')">Education</button>
+        <button class="tab-btn" onclick="switchTab('problems')">Problem Solving</button>
         <button class="tab-btn" onclick="switchTab('skills')">Skills</button>
-        <button class="tab-btn" onclick="switchTab('projects')">
-          Projects
-        </button>
-        <button class="tab-btn" onclick="switchTab('experience')">
-          Experience
-        </button>
+        <button class="tab-btn" onclick="switchTab('experience')">Experience</button>
+        <button class="tab-btn" onclick="switchTab('projects')">Projects</button>
+        <button class="tab-btn" onclick="switchTab('achievements')">Achievements</button>
       </div>
 
       <div id="profile" class="tab-content active">
         <div class="glass-card">
-          <div class="form-group">
-            <label>Name</label><input type="text" id="p-name" />
+          <div class="form-group"><label>Name</label><input type="text" id="p-name" /></div>
+          <div class="form-group"><label>Roles <span class="hint">comma separated</span></label><input type="text" id="p-roles" /></div>
+          <div class="form-group"><label>Bio</label><textarea id="p-bio"></textarea></div>
+          <div class="form-row">
+            <div class="form-group"><label>Email</label><input type="text" id="p-email" /></div>
+            <div class="form-group"><label>Phone</label><input type="text" id="p-phone" /></div>
           </div>
-          <div class="form-group">
-            <label>Roles (comma separated)</label
-            ><input type="text" id="p-roles" />
+          <div class="form-row">
+            <div class="form-group"><label>Location</label><input type="text" id="p-location" /></div>
+            <div class="form-group"><label>Profile Image URL</label><input type="text" id="p-image" /></div>
           </div>
-          <div class="form-group">
-            <label>Bio</label><textarea id="p-bio"></textarea>
+          <div class="form-group"><label>Resume File <span class="hint">e.g. resume.pdf — leave blank to hide the button</span></label><input type="text" id="p-resume" /></div>
+          <h3 style="margin-top:10px;">Social Links</h3>
+          <div class="form-row">
+            <div class="form-group"><label>GitHub</label><input type="text" id="s-github" /></div>
+            <div class="form-group"><label>LinkedIn</label><input type="text" id="s-linkedin" /></div>
           </div>
-          <div class="form-group">
-            <label>Email</label><input type="text" id="p-email" />
-          </div>
-          <div class="form-group">
-            <label>Phone</label><input type="text" id="p-phone" />
-          </div>
-          <div class="form-group">
-            <label>Location</label><input type="text" id="p-location" />
-          </div>
-          <div class="form-group">
-            <label>Profile Image URL</label><input type="text" id="p-image" />
-          </div>
-          <h3>Social Links</h3>
-          <div class="form-group">
-            <label>GitHub</label><input type="text" id="s-github" />
-          </div>
-          <div class="form-group">
-            <label>LinkedIn</label><input type="text" id="s-linkedin" />
-          </div>
-          <div class="form-group">
-            <label>HuggingFace</label><input type="text" id="s-huggingface" />
+          <div class="form-row">
+            <div class="form-group"><label>Hugging Face</label><input type="text" id="s-huggingface" /></div>
+            <div class="form-group"><label>Kaggle</label><input type="text" id="s-kaggle" /></div>
           </div>
         </div>
       </div>
 
+      <div id="sections" class="tab-content">
+        <p style="color: var(--text-secondary); margin-bottom: 18px;">Turn sections on or off, reorder them, or add a brand-new section (e.g. <em>Research</em>, <em>Publications</em>) and manage its cards right here.</p>
+        <div id="sections-list"></div>
+        <button class="btn-secondary" onclick="addCustomSection()">+ Add New Section</button>
+      </div>
+
       <div id="education" class="tab-content">
         <div id="education-list"></div>
-        <button class="btn-secondary" onclick="addEducation()">
-          + Add Education
-        </button>
+        <button class="btn-secondary" onclick="addEducation()">+ Add Education</button>
       </div>
 
       <div id="problems" class="tab-content">
         <div id="problems-list"></div>
-        <button class="btn-secondary" onclick="addProblemSolving()">
-          + Add Platform
-        </button>
+        <button class="btn-secondary" onclick="addProblemSolving()">+ Add Platform</button>
       </div>
 
       <div id="skills" class="tab-content">
         <div id="skills-list"></div>
-        <button class="btn-secondary" onclick="addSkillCategory()">
-          + Add Category
-        </button>
-      </div>
-
-      <div id="projects" class="tab-content">
-        <div id="projects-list"></div>
-        <button class="btn-secondary" onclick="addProject()">
-          + Add Project
-        </button>
+        <button class="btn-secondary" onclick="addSkillCategory()">+ Add Category</button>
       </div>
 
       <div id="experience" class="tab-content">
         <div id="experience-list"></div>
-        <button class="btn-secondary" onclick="addExperience()">
-          + Add Experience
-        </button>
+        <button class="btn-secondary" onclick="addExperience()">+ Add Experience</button>
       </div>
 
-      <div
-        style="
-          margin-top: 40px;
-          border-top: 1px solid var(--glass-border);
-          padding-top: 20px;
-        "
-      >
-        <button class="btn-primary" onclick="generateCode()">
-          Generate Code
-        </button>
-        <p style="color: var(--text-secondary); margin-top: 10px">
-          Click "Generate Code", then copy the text below and paste it into
-          <code>data.js</code>.
+      <div id="projects" class="tab-content">
+        <p style="color: var(--text-secondary); margin-bottom: 18px;">Use the arrows to set priority — the top project shows first. Live link, GitHub, and video only appear on the site if filled in. Notes render like a GitHub README.</p>
+        <div id="projects-list"></div>
+        <button class="btn-secondary" onclick="addProject()">+ Add Project</button>
+      </div>
+
+      <div id="achievements" class="tab-content">
+        <div id="achievements-list"></div>
+        <button class="btn-secondary" onclick="addAchievement()">+ Add Achievement</button>
+      </div>
+
+      <div style="margin-top: 40px; border-top: 1px solid var(--glass-border); padding-top: 24px;">
+        <button class="btn-primary" onclick="generateCode()">Generate Code</button>
+        <p style="color: var(--text-secondary); margin-top: 10px;">
+          Click "Generate Code", then copy the text below and paste it into <code>data.js</code>.
         </p>
         <textarea id="export-area" readonly></textarea>
       </div>
     </div>
 
     <script src="data.js"></script>
+    <script src="script.js"></script>
     <script src="admin.js"></script>
   </body>
 </html>
